@@ -1,0 +1,24 @@
+/* Minimal Dark Glass (CLEAN) */
+
+:root {
+  --bg: #0b0d12;
+  --panel: rgba(255, 255, 255, 0.05);
+  --panel-strong: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.60);
+}
+
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* ✅ ลดแสงฟุ้ง: ปิด glow (ยังคงคลาสไว้เพื่อไม่พัง layout) */
+.glow {
+  display: none;
+}

@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# env
+.env
+**/.env
+
+# build
+dist/
+**/dist
+build/
+**/build
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vite
+.vite/
