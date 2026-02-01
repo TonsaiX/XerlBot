@@ -33,6 +33,8 @@ app.use(rateLimit({ windowMs: 60 * 1000, limit: 120, standardHeaders: true, lega
 app.use(cors({ origin: process.env.WEB_ORIGIN, credentials: true }));
 app.use(express.json({ limit: "1mb" }));
 
+app.set("trust proxy", 1);
+
 app.use(
   session({
     name: "xerl.sid",
@@ -128,7 +130,14 @@ async function checkBotInGuild(guildId) {
 }
 
 /* ===== AUTH ===== */
-app.get("/auth/discord/login", (req, res) => res.redirect(buildDiscordAuthUrl(req)));
+app.get("/auth/discord/login", (req, res) => {
+  const url = buildDiscordAuthUrl(req);
+
+  // สำคัญ: บังคับ save session ก่อน redirect
+  req.session.save(() => {
+    res.redirect(url);
+  });
+});
 
 app.get("/auth/discord/callback", async (req, res) => {
   try {
